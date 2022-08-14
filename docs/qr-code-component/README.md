@@ -23,7 +23,7 @@ This is a solution to the [QR code component challenge on Frontend Mentor](https
 
 ### Links
 
-- [Source code](https://jc-progjava.github.io/FrontendMentor/qr-code-component/)
+- [Source code](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/qr-code-component)
 - [Web view](https://jc-progjava.github.io/FrontendMentor/qr-code-component/)
 
 ## My process
