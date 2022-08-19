@@ -31,3 +31,7 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
 
 - [JC-ProgJava](https://github.com/JC-ProgJava)
 - Frontend Mentor - [Frontend Mentor @JC-ProgJava](https://www.frontendmentor.io/profile/JC-ProgJava)
+
+### Note
+
+- Figma design file provided as project is designated `Free+`.
