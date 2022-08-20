@@ -1,27 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Space tourism website</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+
+    <title>Frontend Mentor | Space tourism website</title>
 </head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<style>
+    .text-container {
+        width: 35%;
+        position: absolute;
+        top: 40%;
+        left: 10%;
+        padding-bottom: 10vw;
+    }
+
+    #explore-button {
+        border: none;
+        outline: 0;
+        background-color: var(--white);
+        font-family: var(--bellefair);
+        font-size: 2.2vw;
+        letter-spacing: 2px;
+        width: 20.8vw;
+        height: 20.8vw;
+        position: fixed;
+        right: 3.5vw;
+        bottom: 3.5vw;
+        text-transform: uppercase;
+        border-radius: 10.4vw;
+        transition: box-shadow 400ms, background-color 400ms;
+    }
+
+    #explore-button:hover {
+        cursor: pointer;
+        box-shadow: 0 0 0 3.5vw rgba(255, 255, 255, 0.1);
+        background-color: #f8f8f8;
+    }
+</style>
 <body>
-
-  00 Home
-  01 Destination
-  02 Crew
-  03 Technology
-
-  So, you want to travel to
-  Space
-  Let’s face it; if you want to go to space, you might as well genuinely go to 
-  outer space and not hover kind of on the edge of it. Well sit back, and relax 
-  because we’ll give you a truly out of this world experience!
-
-  Explore
-
+<div>
+    <img id="backdrop" src="assets/home/background-home-desktop.jpg" alt="backdrop">
+    <nav>
+        <div class="left">
+            <img src="assets/shared/logo.svg" alt="logo">
+        </div>
+        <div class="right nav-text">
+            <a id="selectedTab" href="index.html"><strong>00</strong> Home</a>
+            <a href="destination-moon.html"><strong>01</strong> Destination</a>
+            <a href="crew-commander.html"><strong>02</strong> Crew</a>
+            <a href="technology-vehicle.html"><strong>03</strong> Technology</a>
+        </div>
+    </nav>
+    <div class="text-container">
+        <h5 style="text-transform: uppercase; color: var(--light-blue);">So, you want to travel to</h5>
+        <h1 style="text-transform: uppercase;">Space</h1>
+        <p>Let’s face it; if you want to go to space, you might as well genuinely go to
+            outer space and not hover kind of on the edge of it. Well sit back, and relax
+            because we’ll give you a truly out of this world experience!</p>
+    </div>
+    <button id="explore-button">Explore</button>
+</div>
 </body>
 </html>
