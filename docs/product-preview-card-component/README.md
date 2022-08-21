@@ -32,3 +32,7 @@ set each corner's radius using `border-radius`.
 
 - [JC-ProgJava](https://github.com/JC-ProgJava)
 - Frontend Mentor - [Frontend Mentor @JC-ProgJava](https://www.frontendmentor.io/profile/JC-ProgJava)
+
+## Acknowledgements
+
+- [@correlucas](https://www.frontendmentor.io/profile/correlucas) for helpful feedback related to CSS styling.
