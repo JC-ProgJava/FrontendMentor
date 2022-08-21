@@ -23,6 +23,7 @@
 
 body {
     background-color: var(--cream);
+    min-height: 100vh;
 }
 
 p {
@@ -70,6 +71,7 @@ p {
     margin-right: auto;
     width: 50%;
     height: fit-content;
+    max-width: 900px;
 }
 
 .productView {
@@ -98,7 +100,7 @@ p {
 
 .productName {
     font-family: "Fraunces", serif;
-    font-size: 27px;
+    font-size: 32px;
 }
 
 .price {
