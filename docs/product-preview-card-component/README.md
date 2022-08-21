@@ -2,6 +2,15 @@
 
 This is a solution to the [Product preview card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-preview-card-component-GO7UmttRfa).
 
+* [Overview](#overview)
+  * [Screenshot](#screenshot)
+  * [Links](#links)
+* [My process](#my-process)
+  * [Built with](#built-with)
+  * [References and Learning Points](#references-and-learning-points)
+* [Author](#author)
+* [Acknowledgements](#acknowledgements)
+
 ## Overview
 
 ### Screenshot

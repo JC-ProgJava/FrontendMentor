@@ -3,6 +3,14 @@
 This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3).  
 
 ## Table of contents
+* [Overview](#overview)
+  * [Screenshot](#screenshot)
+  * [Links](#links)
+* [My process](#my-process)
+  * [Built with](#built-with)
+  * [References and Learning Points](#references-and-learning-points)
+* [Author](#author)
+  * [Note](#note)
 
 ## Overview
 
