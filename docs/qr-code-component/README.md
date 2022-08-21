@@ -19,7 +19,7 @@ This is a solution to the
 
 ### Screenshot
 
-![](./Result.png)
+![](Result.png)
 
 ### Links
 

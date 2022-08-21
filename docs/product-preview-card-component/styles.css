@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap');
+
+:root {
+    --dark-cyan: hsl(158, 36%, 37%);
+    --cream: hsl(30, 38%, 92%);
+    --deep-blue: hsl(212, 21%, 14%);
+    --gray-blue: hsl(228, 12%, 48%);
+    --dark-green: #1A4031;
+    --light-green: #3E826B;
+    --white: #FFFFFF;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    padding: 40px;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+body {
+    background-color: var(--cream);
+}
+
+p {
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    color: var(--gray-blue);
+    line-height: 1.7;
+}
+
+@media only screen and (max-width: 850px) {
+    .card {
+        flex-direction: column;
+    }
+
+    .productView img {
+        max-height: 300px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .details {
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    .card {
+        flex-direction: row;
+    }
+
+    .productView img {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .details {
+        padding: 40px;
+    }
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: fit-content;
+}
+
+.productView {
+    height: auto;
+    width: auto;
+    display: inline-block;
+}
+
+.productView img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.details {
+    display: inline-block;
+    height: fit-content;
+    align-self: center;
+}
+
+.label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.productName {
+    font-family: "Fraunces", serif;
+    font-size: 27px;
+}
+
+.price {
+    padding: 1vw 0;
+}
+
+.discountPrice {
+    font-family: "Fraunces", serif;
+    font-size: 24px;
+    color: var(--light-green);
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    display: inline-block;
+}
+
+.button span {
+    display: inline-block;
+    vertical-align: middle;
+    dominant-baseline: middle;
+    margin-left: 10px;
+}
+
+.button img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.button {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 15px 20px;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+
+    color: var(--white);
+    background: var(--light-green);
+    transition: color 300ms, background 300ms, box-shadow 300ms;
+}
+
+.button:hover {
+    background: var(--dark-green);
+}
