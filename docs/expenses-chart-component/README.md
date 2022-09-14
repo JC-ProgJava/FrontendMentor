@@ -20,9 +20,6 @@ This is a solution to the [Expenses chart component challenge on Frontend Mentor
 - Raw HTML and CSS
 - D3.js (for charting)
 
-### References and Learning Points
-
-
 ## Author
 
 - [JC-ProgJava](https://github.com/JC-ProgJava)
