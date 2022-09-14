@@ -9,6 +9,28 @@
     <title>Frontend Mentor | Expenses chart component</title>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+        :root {
+            --soft-red: hsl(10, 79%, 65%);
+            --cyan: hsl(186, 34%, 60%);
+            --dark-brown: hsl(25, 47%, 15%);
+            --medium-brown: hsl(28, 10%, 53%);
+            --cream: hsl(27, 66%, 92%);
+            --pale-orange: hsl(33, 100%, 98%);
+        }
+
+        body {
+            background-color: var(--cream);
+        }
+
+        p {
+            font-family: "DM Sans", sans-serif;
+            font-size: 18px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
         .attribution {
             font-size: 11px;
             text-align: center;
@@ -17,32 +39,269 @@
         .attribution a {
             color: hsl(228, 45%, 44%);
         }
+
+        #component {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #banner {
+            background-color: var(--soft-red);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #banner .left {
+            padding: 10px 8px;
+            color: var(--pale-orange);
+        }
+
+        #banner .label {
+            margin-bottom: 10px;
+        }
+
+        #banner .balance {
+            font-family: "DM Sans", sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        #banner .right {
+            display: contents;
+        }
+
+        #banner .right img {
+            vertical-align: middle;
+            display: inline-block;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        #detail {
+            background-color: var(--pale-orange);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #detail .largeLabel {
+            display: block;
+            font-family: "DM Sans", sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: var(--dark-brown);
+        }
+
+        #chart {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            z-index: 1;
+        }
+
+        hr {
+            border: 1px solid var(--cream);
+            border-radius: 3px;
+        }
+
+        .tooltip {
+            position: fixed;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        #total {
+            padding: 5px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: bold;
+            font-size: 45px;
+            color: var(--dark-brown);
+        }
+
+        .statLabel {
+            color: var(--medium-brown);
+            font-weight: normal;
+        }
+
+        #statTab {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #percentChange {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        #percentChange .percentage {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            text-align: right;
+            font-weight: bold;
+            color: var(--dark-brown);
+        }
+
+        #percentChange .label {
+            margin-block-start: 0;
+            margin-block-end: 0;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 
-My balance
-$921.48
+<div id="component">
+    <div id="banner">
+        <div class="left">
+            <p class="label">My balance</p>
+            <div class="balance">$921.48</div>
+        </div>
+        <div class="right">
+            <img src="assets/images/logo.svg" alt="logo">
+        </div>
+    </div>
+    <div id="detail">
+        <span class="largeLabel">Spending - Last 7 days</span>
 
-Spending - Last 7 days
+        <div style="position: relative;">
+            <div class="tooltip" style="opacity: 0; visibility: hidden;"></div>
+            <svg id="chart"></svg>
+        </div>
+        <hr/>
+        <p class="statLabel">Total this month</p>
+        <div id="statTab">
+            <div id="total">
+                <span>$478.33</span>
+            </div>
 
-mon
-tue
-wed
-thu
-fri
-sat
-sun
-
-Total this month
-$478.33
-
-+2.4%
-from last month
-
+            <div id="percentChange">
+                <p class="percentage">+2.4%</p>
+                <p class="label">from last month</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
 <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</p>
+    <p>Coded by <a href="https://www.frontendmentor.io/profile/JC-ProgJava">JC-ProgJava</a>.</p>
 </div>
 </body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    let margin = {left: 20, right: 20, top: 20, bottom: 30};
+    let width = Math.min(document.getElementById("detail").clientWidth - parseFloat(getComputedStyle(document.getElementById("detail")).paddingLeft) - parseFloat(getComputedStyle(document.getElementById("detail")).paddingRight), 500) - margin.left - margin.right;
+    let height = 200 - margin.top - margin.bottom;
+    d3.json("data.json").then((data) => {
+        chart(data);
+    });
+
+    window.addEventListener("resize", () => {
+        width = Math.min(document.getElementById("detail").clientWidth - parseFloat(getComputedStyle(document.getElementById("detail")).paddingLeft) - parseFloat(getComputedStyle(document.getElementById("detail")).paddingRight), 500) - margin.left - margin.right;
+        d3.selectAll("#chart .barGraph").remove();
+        d3.json("data.json").then((data) => {
+            chart(data);
+        });
+    });
+
+    function chart(data) {
+        let weekDays = d3.map(data, d => {
+            return d["day"];
+        });
+
+        let values = d3.map(data, d => {
+            return d["amount"];
+        });
+
+        let xScale = d3.scaleBand()
+            .domain(weekDays)
+            .range([0, width + width / 16]);
+
+        let extent = d3.extent(values);
+        extent[0] *= 0.6;
+        extent[1] *= 1.4;
+
+        let yScale = d3.scaleLinear()
+            .domain(extent)
+            .range([0, 200]);
+
+        const svg = d3.select("svg#chart")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("class", "barGraph")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        svg.selectAll("svg g.barGraph rect")
+            .data(data)
+            .join(
+                function (enter) {
+                    return enter.append('rect')
+                        .attr('height', function (d) {
+                            return yScale(d.amount);
+                        })
+                        .attr('x', function (d) {
+                            return xScale(d.day);
+                        })
+                        .attr('y', function (d) {
+                            return height - yScale(d.amount);
+                        })
+                        .attr("width", 0.1 * width)
+                        .attr("rx", 5)
+                        .attr("fill", function (d, i) {
+                            return i !== new Date().getDay() - 1 ? "var(--soft-red)" : "var(--cyan)";
+                        })
+                        .on("mouseover", function (e, d) {
+                            d3.select(this)
+                                .transition()
+                                .attr("filter", "opacity(60%)")
+
+                            d3.select(".tooltip")
+                                .html(`$${+d.amount}`)
+                                .style("opacity", 1)
+                                .style("visibility", "visible")
+                                .style("padding", "10px")
+                                .style("border-radius", "5px")
+                                .style("font-family", "'DM Sans'")
+                                .style("color", "var(--pale-orange)")
+                                .style("background-color", "var(--dark-brown)")
+                                .style("left", (e.target.getBoundingClientRect().left + e.target.getBoundingClientRect().right) / 2 - d3.select(".tooltip").node().getBoundingClientRect().width / 2 + "px")
+                                .style("top", (e.target.getBoundingClientRect().top - d3.select(".tooltip").node().getBoundingClientRect().height - 5) + "px");
+                        })
+                        .on("mouseout", function (e, d) {
+                            d3.select(this)
+                                .transition()
+                                .attr("filter", "opacity(100%)")
+
+                            d3.select(".tooltip")
+                                .style("opacity", 0)
+                                .style("visibility", "hidden")
+                        })
+                }
+            );
+
+        svg.selectAll("svg g.barGraph text")
+            .data(data)
+            .join(
+                function (enter) {
+                    return enter.append('text')
+                        .text((d, i) => weekDays[i])
+                        .attr("x", function (d, i) {
+                            return xScale(d.day) + 0.1 * width / 2;
+                        })
+                        .attr("y", function (d, i) {
+                            return height + 15;
+                        })
+                        .attr("text-anchor", "middle")
+                        .attr("dominant-baseline", "middle")
+                        .attr("fill", "var(--medium-brown)")
+                        .style("font-family", "'DM Sans'");
+                }
+            );
+    }
+</script>
 </html>
