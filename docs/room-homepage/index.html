@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Room homepage</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap');
+
+        body {
+            margin: 0;
+        }
+
+        :root {
+            --dark-gray: hsl(0, 0%, 63%);
+            --black: hsl(0, 0%, 0%);
+            --white: hsl(0, 0%, 100%);
+            --very-dark-gray: hsl(0, 0%, 27%);
+            --body-font-size: 12px;
+        }
+
+        nav {
+            width: 100%;
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            padding: 40px;
+            box-sizing: border-box;
+            background-color: transparent;
+            transition: background-color 300ms;
+        }
+
+        nav a {
+            margin: 0 10px;
+            font-family: "League Spartan", sans-serif;
+            text-transform: lowercase;
+            color: var(--white);
+            font-size: 100%;
+            font-weight: 400;
+            text-decoration: none;
+            transition: color 300ms;
+        }
+
+        nav a:hover {
+            color: rgb(230, 230, 230);
+            cursor: pointer;
+        }
+
+        nav span {
+            display: inline;
+            margin-right: 25px;
+        }
+
+        nav span img {
+            vertical-align: middle;
+            display: inline-block;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        #grid {
+            display: flex;
+        }
+
+        #grid #imageFirst, #grid #imageSecond {
+            background-size: cover;
+            width: 100%;
+            height: max(300px, 20vh);
+        }
+
+        @media (max-width: 500px) {
+            #grid {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            #grid #imageFirst {
+                order: 1;
+            }
+
+            #grid #imageSecond {
+                order: 3;
+            }
+
+            #grid #imageFirst, #grid #imageSecond {
+                flex: 100%;
+                display: block;
+            }
+
+            #grid #text {
+                order: 2;
+                flex: 100%;
+            }
+
+            .slide {
+                flex-wrap: wrap;
+                min-height: 200px;
+            }
+
+            .slide .picture {
+                flex: 100%;
+                min-height: 200px;
+                order: 1;
+                display: block;
+            }
+
+            .slide .text {
+                flex: 100%;
+                order: 2;
+            }
+
+            .picture {
+                position: relative;
+            }
+
+            #toggle {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+
+            nav {
+                display: flex;
+                width: 100%;
+            }
+
+            nav #buttons {
+                order: 1;
+                display: inline;
+            }
+
+            nav #logo {
+                order: 2;
+                margin: auto;
+                opacity: 1;
+                display: inline;
+                transition: opacity 100ms;
+            }
+
+            nav #links {
+                order: 3;
+                display: none;
+                opacity: 0;
+                margin: 0;
+                transition: opacity 300ms;
+            }
+
+            nav #links a {
+                color: var(--black);
+                transition: color 300ms;
+            }
+
+            nav #links a:hover {
+                color: var(--dark-gray);
+            }
+
+            nav #buttons {
+                margin: 0;
+            }
+
+            nav #buttons #open {
+                display: inline;
+                opacity: 1;
+                transition: opacity 300ms;
+                vertical-align: baseline;
+            }
+
+            nav #buttons #open:hover {
+                cursor: pointer;
+                opacity: 0.6 !important;
+            }
+
+            nav #buttons #close {
+                display: none;
+                opacity: 0;
+                transition: opacity 300ms, filter 300ms;
+                vertical-align: baseline;
+            }
+
+            nav #buttons #close:hover {
+                cursor: pointer;
+                filter: drop-shadow(2px 4px 5px black);
+            }
+        }
+
+        @media (max-width: 1100px) and (min-width: 500px) {
+            #grid {
+                flex-wrap: wrap;
+            }
+
+            #grid #imageFirst {
+                order: 1;
+            }
+
+            #grid #imageSecond {
+                order: 2;
+            }
+
+            #grid #imageFirst, #grid #imageSecond {
+                flex: 50%;
+                display: inline-block;
+            }
+
+            #grid #text {
+                order: 3;
+                flex: 100%;
+            }
+
+            .slide {
+                min-height: 500px;
+            }
+
+            .picture {
+                position: relative;
+            }
+
+            #toggle {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateX(100%);
+            }
+
+            nav #buttons {
+                display: none;
+            }
+
+            nav #links {
+                display: inline !important;
+                justify-content: normal;
+                align-content: center;
+                align-items: center;
+                opacity: 1 !important;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            #grid #imageFirst {
+                order: 1;
+                flex: 30%;
+            }
+
+            #grid #imageSecond {
+                order: 3;
+                flex: 30%;
+            }
+
+            #grid #text {
+                flex: 40%;
+                order: 2;
+            }
+
+            .slide {
+                min-height: 500px;
+            }
+
+            .picture {
+                position: relative;
+            }
+
+            #toggle {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateX(100%);
+            }
+
+            nav #buttons {
+                display: none;
+            }
+
+            nav #links {
+                display: inline;
+                justify-content: normal;
+                align-content: center;
+                align-items: center;
+                opacity: 1;
+            }
+        }
+
+        #grid #text {
+            font-family: 'League Spartan', sans-serif;
+            padding: 40px 30px;
+        }
+
+        #grid #text h2 {
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 3px;
+            font-size: max(2vw, 15pt);
+            line-height: 1.3;
+        }
+
+        #grid #text p {
+            font-weight: 400;
+            color: var(--dark-gray);
+            font-size: max(1.5vw, 12pt);
+            line-height: 1.3;
+        }
+
+        .slide {
+            display: flex;
+        }
+
+        .slide .picture {
+            width: 60%;
+            display: block;
+            background-size: cover;
+            opacity: 1;
+            transition: opacity 600ms;
+        }
+
+        .slide .text {
+            width: 40%;
+            padding: 5% 8%;
+            opacity: 1;
+            transition: opacity 600ms;
+        }
+
+        .slide .text h1 {
+            font-family: 'League Spartan', sans-serif;
+            font-size: max(4vw, 20pt);
+            line-height: 1.1;
+            word-wrap: break-word;
+        }
+
+        .slide .text p {
+            font-family: 'League Spartan', sans-serif;
+            font-size: max(1.5vw, 12pt);
+            color: var(--dark-gray);
+            line-height: 1.4;
+        }
+
+        .shopCall {
+            padding: 20px 0 50px 0;
+            transition: color 300ms;
+        }
+
+        .shopCall img {
+            transition: transform 300ms, opacity 300ms;
+            opacity: 1;
+        }
+
+        .shopCall:hover {
+            color: var(--dark-gray);
+            cursor: pointer;
+        }
+
+        .shopCall:hover img {
+            transform: translateX(30%);
+            opacity: 0.5;
+        }
+
+        .shopCall span {
+            font-family: "League Spartan", sans-serif;
+            text-transform: uppercase;
+            font-size: max(14pt, 2vw);
+            letter-spacing: 5px;
+            font-weight: 200;
+        }
+
+        #toggle {
+            display: block;
+        }
+
+        #toggle .block {
+            width: 50px;
+            height: 50px;
+            background-color: var(--black);
+            display: inline-flex;
+            position: relative;
+            float: left;
+            transition: background-color 200ms;
+            margin: 0;
+        }
+
+        #toggle .block:hover {
+            background-color: var(--dark-gray);
+            cursor: pointer;
+        }
+
+        #toggle .block img {
+            margin: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <span id="logo">
+    <img src="assets/images/logo.svg" alt="logo">
+  </span>
+    <span id="links">
+      <a href="index.html">Home</a>
+      <a>Shop</a>
+      <a>About</a>
+      <a>Contact</a>
+    </span>
+    <span id="buttons">
+      <img onclick="toggleMenu()" id="open" src="assets/images/icon-hamburger.svg" alt="menu">
+      <img onclick="toggleMenu()" id="close" src="assets/images/icon-close.svg" alt="close">
+    </span>
+</nav>
+<div>
+    <div class="slide">
+        <div class="picture" style="">
+            <div id="toggle">
+                <div class="block" onclick="updateInformation(-1)">
+                    <img src="assets/images/icon-angle-left.svg" alt="arrow-left">
+                </div>
+                <div class="block" onclick="updateInformation(1)">
+                    <img src="assets/images/icon-angle-right.svg" alt="arrow-right">
+                </div>
+            </div>
+        </div>
+        <div class="text">
+            <h1></h1>
+            <p></p>
+            <div class="shopCall">
+                <span>Shop now</span>
+                <img src="assets/images/icon-arrow.svg" alt="arrow">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="grid">
+    <div id="imageFirst" style="background-image: url('assets/images/image-about-dark.jpg')"></div>
+    <div id="text">
+        <h2>About our furniture</h2>
+
+        <p>Our multifunctional collection blends design and function to suit your individual taste.
+            Make each room unique, or pick a cohesive theme that best express your interests and what
+            inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+            or anything in between. Product specialists are available to help you create your dream space.</p>
+    </div>
+    <div id="imageSecond" style="background-image: url('assets/images/image-about-light.jpg')"></div>
+</div>
+
+<div style="font-family: 'League Spartan', sans-serif; display: block; text-align: center; padding: 10px; margin-top:20px; margin-bottom: 20px;">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/JC-ProgJava" target="_blank">JC-ProgJava</a>.
+</div>
+<script>
+  let h1texts = ["Discover innovative ways to decorate", "We are available all across the globe", "Manufactured with the best materials"];
+  let ptexts = ["We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love.",
+    "With stores all over the world, it's easy for you to find furniture for your home or place of business. Locally, we’re in most major cities throughout the country. Find the branch nearest you using our store locator. Any questions? Don't hesitate to contact us today.",
+    "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office."];
+  let images = ["assets/images/desktop-image-hero-1.jpg", "assets/images/desktop-image-hero-2.jpg", "assets/images/desktop-image-hero-3.jpg"];
+
+  let toggleIndex = 0;
+  updateInformation(1);
+  window.setInterval(function () {
+    updateInformation(1);
+  }, 10000);
+
+  function updateInformation(increment) {
+    toggleIndex += increment;
+    if (toggleIndex < 0) toggleIndex += 3;
+    let i = toggleIndex % 3;
+    document.querySelectorAll(".slide .picture")[0].style.opacity = "0";
+    document.querySelectorAll(".slide .text")[0].style.opacity = "0";
+
+    setTimeout(function () {
+      document.querySelectorAll(".slide .picture")[0].style.backgroundImage = "url(" + images[i] + ")";
+      document.querySelectorAll(".slide .text h1")[0].innerText = h1texts[i];
+      document.querySelectorAll(".slide .text p")[0].innerText = ptexts[i];
+
+
+      document.querySelectorAll(".slide .picture")[0].style.opacity = "1";
+      document.querySelectorAll(".slide .text")[0].style.opacity = "1";
+    }, 600);
+  }
+
+  function toggleMenu() {
+    if (document.querySelectorAll("#open")[0].style.opacity !== '0') { // open menu
+      document.querySelector("#open").style.opacity = '0';
+      document.querySelector("#logo").style.display = 'none';
+      document.querySelector("nav").style.backgroundColor = 'white';
+      document.querySelector("nav").style.justifyContent = 'space-between';
+      document.querySelector("#close").style.display = 'inline';
+      document.querySelector("#links").style.display = 'flex';
+      document.querySelector("#links").style.justifyContent = 'center';
+      document.querySelector("#links").style.alignItems = 'center';
+
+      setTimeout(function () {
+        document.querySelector("#open").style.display = 'none';
+        document.querySelector("#close").style.opacity = '1';
+        document.querySelector("#links").style.opacity = '1';
+      }, 300);
+    } else { // close menu
+      document.querySelector("#close").style.opacity = '0';
+      document.querySelector("#links").style.opacity = '0';
+
+      setTimeout(function () {
+        document.querySelector("nav #buttons #open").style.display = 'inline';
+        document.querySelector("nav #buttons #open").style.opacity = '1';
+
+        document.querySelector("#logo").style.display = 'inline';
+        document.querySelector("nav").style.backgroundColor = 'transparent';
+        document.querySelector("nav").style.justifyContent = 'default';
+        document.querySelector("#close").style.display = 'none';
+        document.querySelector("#links").style.display = 'none';
+      }, 300);
+    }
+  }
+</script>
+</body>
+</html>
