@@ -6,17 +6,12 @@ This is a solution to the [Room homepage challenge on Frontend Mentor](https://w
 * [Frontend Mentor - Room Homepage](#frontend-mentor---room-homepage)
   * [Table of contents](#table-of-contents)
   * [Overview](#overview)
-    * [Screenshot](#screenshot)
     * [Links](#links)
     * [Sidenotes](#sidenotes)
     * [Built with](#built-with)
   * [Author](#author)
 
 ## Overview
-
-### Screenshot
-
-
 ### Links
 
 - [Source code](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/room-homepage)
