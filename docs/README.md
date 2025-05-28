@@ -10,4 +10,5 @@ Frontend project implementations.
 | 2     |       Age Calculator App       |             [Webpage](https://jc-progjava.github.io/FrontendMentor/age-calculator-app/), [Source](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/age-calculator-app/)             |
 | 3  🟨 |         Space Tourism          |                  [Webpage](https://jc-progjava.github.io/FrontendMentor/space-tourism/), [Source](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/space-tourism/)                  |
 | 3     |         Room Homepage          |                  [Webpage](https://jc-progjava.github.io/FrontendMentor/room-homepage/), [Source](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/room-homepage/)                  |
+| 3     |       Frontend Quiz App        |             [Webpage](https://jc-progjava.github.io/FrontendMentor/age-calculator-app/), [Source](https://github.com/JC-ProgJava/FrontendMentor/tree/master/docs/frontend-quiz-app/)              |
 
